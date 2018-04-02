@@ -22,16 +22,21 @@
 unsigned char ID_Envoi_USART;
 unsigned char ID_Adc1s;
 unsigned char ID_Adc2s;
+unsigned char ID_Adc3s;
+unsigned char ID_Interrupt_Speed;
 volatile unsigned char nombre_appuis_bouton;
 volatile int resultat_ADC;
 volatile int Tension;
 volatile int Courant_Moteur;
+extern volatile int rpmcount;
+int rpm = 0;
 unsigned char etat;
 unsigned char etat_center;
 //char Button1 = NONE;
 char String_Tension[5];
 char Buffer[5];
 char String_Courant_Moteur[5];
+char String_RPM[5];
 char *Test_USART;
 char trame2[16];
 char i;
@@ -43,6 +48,8 @@ char i;
 void Envoi_USART(void) ;
 void Adc1s(void);
 void Adc2s(void);
+void Adc3s(void);
+void Interrupt_Speed(void);
 
 // FONCTION PRINCIPALE
 int main(void)
@@ -58,6 +65,8 @@ int main(void)
 	ID_Envoi_USART = Callbacks_Record_Timer(Envoi_USART, 1000) ; //(Mettre 1000 pour avoir 500ms) 
 	ID_Adc1s = Callbacks_Record_Timer(Adc1s, 200);
 	ID_Adc2s = Callbacks_Record_Timer(Adc2s, 200);
+	ID_Adc3s = Callbacks_Record_Timer(Adc3s, 200);
+	ID_Interrupt_Speed = Callbacks_Record_Timer(Interrupt_Speed, 2000);
 	callbacks_Start();
 	//INITIALISATION LCD
 	Callbacks_Record_USART(Affichage_usart);
@@ -66,11 +75,13 @@ int main(void)
 // CONTENU DES FONCTIONS CALLBACKS
 void Envoi_USART(void)
 {
-	char mesures[13];
+	char mesures[21]; //13
 	strcpy(mesures,"U");
 	strcat(mesures,String_Tension);
 	strcat(mesures,";IM");
 	strcat(mesures,String_Courant_Moteur);
+	strcat(mesures,";RPM");
+	strcat(mesures,String_RPM);
 	strcat(mesures,"\n");
 	Usart_String(mesures);
 	}
@@ -146,4 +157,45 @@ void Adc2s(void)
 	{
 		
 	}
+}
+
+void Adc3s(void)
+{
+	
+}
+
+void Interrupt_Speed(void)
+{
+	//Desable interrupt int0
+	EIMSK = (0<<INT0); //set bit in port EIMSK // désactivation de l'interruption sur INT0
+	rpm = rpmcount * 60;
+	for(int i=0;i<5;i++){
+		String_RPM[i]=0;
+	}
+	itoa(rpm, String_RPM, 10);
+	if(rpm<10)
+	{
+		strcpy(Buffer,"000");
+		strcat(Buffer,String_RPM);
+		strcpy(String_RPM,Buffer);
+	}
+	else if(rpm>10 && rpm<100)
+	{
+		strcpy(Buffer,"00");
+		strcat(Buffer,String_RPM);
+		strcpy(String_RPM,Buffer);
+	}
+	else if(rpm>100 && rpm<1000)
+	{
+		strcpy(Buffer,"0");
+		strcat(Buffer,String_RPM);
+		strcpy(String_RPM,Buffer);
+	}
+	else
+	{
+		
+	}
+	
+	rpmcount = 0; // Restart the RPM counter
+	EIMSK |= (1<<INT0); //set bit in port EIMSK // réactivation de l'interruption sur INT0
 }

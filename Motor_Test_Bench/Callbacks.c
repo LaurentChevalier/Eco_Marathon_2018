@@ -27,6 +27,7 @@ extern volatile unsigned char nombre_appuis_bouton;
 volatile char buffer [MAX_BUFFER];
 volatile unsigned char emplacement = 0;
 volatile unsigned char USART_RECEPT = FALSE;
+volatile int rpmcount = 0;
 //char Button = NONE;
 extern volatile int resultat_ADC;
 volatile unsigned char adclow;
@@ -169,4 +170,9 @@ ISR (ADC_vect){
 	resultat_ADC = (adchigh << 8); // Décalage des bits présents dans ADCH de 8 vers la gauche
 	resultat_ADC = resultat_ADC | (unsigned int)adclow; // ou bit à bit en entre resultat_ADC qui contient les 8 bits de MSB et ADCL qui contient les 8 bits de LSB
 
+}
+
+
+ISR (INT0_vect){
+	rpmcount++;
 }
