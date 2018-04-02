@@ -28,6 +28,7 @@ volatile unsigned char nombre_appuis_bouton;
 volatile int resultat_ADC;
 volatile int Tension;
 volatile int Courant_Moteur;
+volatile int Couple_Moteur;
 extern volatile int rpmcount;
 int rpm = 0;
 unsigned char etat;
@@ -37,6 +38,7 @@ char String_Tension[5];
 char Buffer[5];
 char String_Courant_Moteur[5];
 char String_RPM[5];
+char String_Couple_Moteur[5];
 char *Test_USART;
 char trame2[16];
 char i;
@@ -75,13 +77,15 @@ int main(void)
 // CONTENU DES FONCTIONS CALLBACKS
 void Envoi_USART(void)
 {
-	char mesures[21]; //13
+	char mesures[33]; //13
 	strcpy(mesures,"U");
 	strcat(mesures,String_Tension);
 	strcat(mesures,";IM");
-	strcat(mesures,String_Courant_Moteur);
+	strcat(mesures,String_Courant_Moteur);//
 	strcat(mesures,";RPM");
 	strcat(mesures,String_RPM);
+	strcat(mesures,";Nm");
+	strcat(mesures,String_Couple_Moteur);
 	strcat(mesures,"\n");
 	Usart_String(mesures);
 	}
@@ -128,7 +132,7 @@ void Adc1s(void)
 }
 void Adc2s(void)
 {
-	ADMUX = 0b01000000;//Attention logique inversée (idem)
+	ADMUX = 0b01000010;//Attention logique inversée (idem)
 	ADCSRA |=(1<<ADSC);
 	Courant_Moteur = resultat_ADC;
 	for(int i=0;i<5;i++){
@@ -161,7 +165,35 @@ void Adc2s(void)
 
 void Adc3s(void)
 {
-	
+	ADMUX = 0b01000000;//Attention logique inversée (idem)
+	ADCSRA |=(1<<ADSC);
+	Couple_Moteur = resultat_ADC;
+	for(int i=0;i<5;i++){
+		String_Couple_Moteur[i]=0;
+	}
+	itoa(Couple_Moteur, String_Couple_Moteur, 10);
+	if(Couple_Moteur<10)
+	{
+		strcpy(Buffer,"000");
+		strcat(Buffer,String_Couple_Moteur);
+		strcpy(String_Couple_Moteur,Buffer);
+	}
+	else if(Couple_Moteur>10 && Couple_Moteur<100)
+	{
+		strcpy(Buffer,"00");
+		strcat(Buffer,String_Couple_Moteur);
+		strcpy(String_Couple_Moteur,Buffer);
+	}
+	else if(Couple_Moteur>100 && Couple_Moteur<1000)
+	{
+		strcpy(Buffer,"0");
+		strcat(Buffer,String_Couple_Moteur);
+		strcpy(String_Couple_Moteur,Buffer);
+	}
+	else
+	{
+		
+	}
 }
 
 void Interrupt_Speed(void)
