@@ -1,0 +1,10 @@
+C:\Users\laure\documents\visual studio 2010\Projects\Motor_Test_Bench\Motor_Test_Bench\bin\Release\Motor_Test_Bench.exe
+C:\Users\laure\documents\visual studio 2010\Projects\Motor_Test_Bench\Motor_Test_Bench\bin\Release\Motor_Test_Bench.pdb
+C:\Users\laure\documents\visual studio 2010\Projects\Motor_Test_Bench\Motor_Test_Bench\bin\Release\Motor_Test_Bench.xml
+C:\Users\laure\documents\visual studio 2010\Projects\Motor_Test_Bench\Motor_Test_Bench\obj\x86\Release\Motor_Test_Bench.Main.resources
+C:\Users\laure\documents\visual studio 2010\Projects\Motor_Test_Bench\Motor_Test_Bench\obj\x86\Release\Motor_Test_Bench.Settings.resources
+C:\Users\laure\documents\visual studio 2010\Projects\Motor_Test_Bench\Motor_Test_Bench\obj\x86\Release\Motor_Test_Bench.Resources.resources
+C:\Users\laure\documents\visual studio 2010\Projects\Motor_Test_Bench\Motor_Test_Bench\obj\x86\Release\Motor_Test_Bench.vbproj.GenerateResource.Cache
+C:\Users\laure\documents\visual studio 2010\Projects\Motor_Test_Bench\Motor_Test_Bench\obj\x86\Release\Motor_Test_Bench.exe
+C:\Users\laure\documents\visual studio 2010\Projects\Motor_Test_Bench\Motor_Test_Bench\obj\x86\Release\Motor_Test_Bench.xml
+C:\Users\laure\documents\visual studio 2010\Projects\Motor_Test_Bench\Motor_Test_Bench\obj\x86\Release\Motor_Test_Bench.pdb

@@ -2,13 +2,15 @@
 Imports System.IO.Ports
 Imports System.Threading
 Imports Microsoft.VisualBasic.FileIO
-
+'Laurent Chevalier 2018
 Public Class Main
     Dim Tension As Decimal
     Dim Courant As Decimal
     Dim Puissance As Decimal
     Dim Couple As Decimal
     Dim Vitesse As Decimal
+    Dim boutonclick_save As Boolean = False
+    Dim bouton_Quit As Boolean = False
     Shared _serialPort As SerialPort
     Private Shared WithEvents myTimer As New System.Windows.Forms.Timer()
     Private Sub Form1_Load(sender As System.Object, e As System.EventArgs) Handles MyBase.Load
@@ -31,19 +33,20 @@ Public Class Main
     End Sub
 
     Private Sub Button2_Click(sender As System.Object, e As System.EventArgs) Handles Button2.Click
+        bouton_Quit = True
         MsgBox("Thanks to use this application", 64, "BYE")
         SerialPort1.Close()
         End
     End Sub
 
     Private Sub Button1_Click(sender As System.Object, e As System.EventArgs) Handles Button1.Click
+        boutonclick_save = True
         'CreateCSVfile(Application.StartupPath & "\" & "CustomerRecords.csv", txtCustomerId.Text.ToString(), txtFirstName.Text.ToString(), txtLastName.Text.ToString(), txtPhoneNo.Text.ToString(), txtEmail.Text.ToString(), txtMessage.Text.ToString())
     End Sub
 
     Private Sub Timer1_Tick(sender As System.Object, e As System.EventArgs) Handles Timer1.Tick
         SerialPort1.Open()
 
-        'edt_vitesse.Text = SerialPort1.ReadLine
         Dim testString1 As String = SerialPort1.ReadLine
         Dim CourantVal As String = String.Empty
         Dim TensionVal As String = String.Empty
@@ -88,28 +91,33 @@ Public Class Main
         TextBox5.Text = Puissance
 
         SerialPort1.Close()
+
+        If boutonclick_save Then
+            CreateCSVfile(Application.StartupPath & "\" & "Test_Bench_Measures.csv", "U" & TensionVal, "IM" & CourantVal, "RPM" & VitesseVal, "Nm" & CoupleVal)
+        End If
     End Sub
 
-    'Private Sub CreateCSVfile(ByVal _strCustomerCSVPath As String, ByVal _CustomerID As String, ByVal _FirstName As String, ByVal _LastName As String, ByVal _Phone As String, ByVal _Email As String, ByVal _Msg As String)
-    '    Try
-    '        Dim stLine As String = ""
-    '        Dim objWriter As IO.StreamWriter = IO.File.AppendText(_strCustomerCSVPath)
-    '        If IO.File.Exists(_strCustomerCSVPath) Then
-    '            objWriter.Write(_CustomerID & ",")
-    '            objWriter.Write(_FirstName & ",")
-    '            objWriter.Write(_LastName & ",")
-    '            objWriter.Write(_Email & ",")
+    Private Sub CreateCSVfile(ByVal _strCustomerCSVPath As String, ByVal _Tension As String, ByVal _Courant As String, ByVal _Vitesse As String, ByVal _Couple As String)
+        Try
+            Dim stLine As String = ""
+            Dim objWriter As IO.StreamWriter = IO.File.AppendText(_strCustomerCSVPath)
+            If IO.File.Exists(_strCustomerCSVPath) Then
+                objWriter.Write(_Tension & ";")
+                objWriter.Write(_Courant & ";")
+                objWriter.Write(_Vitesse & ";")
+                objWriter.Write(_Couple)
 
-    '            'If value contains comma in the value then you have to perform this opertions
-    '            Dim append = If(_Msg.Contains(","), String.Format("""{0}""", _Msg), _Msg)
-    '            stLine = String.Format("{0}{1},", stLine, append)
-    '            objWriter.Write(stLine)
-
-    '            objWriter.Write(_Phone)
-    '            objWriter.Write(Environment.NewLine)
-    '        End If
-    '        objWriter.Close()
-    '    Catch ex As Exception
-    '    End Try
-    'End Sub
+                ''If value contains comma in the value then you have to perform this opertions
+                'Dim append = If(_Msg.Contains(","), String.Format("""{0}""", _Msg), _Msg)
+                'stLine = String.Format("{0}{1},", stLine, append)
+                
+                objWriter.Write(Environment.NewLine)
+            End If
+            If bouton_Quit Then
+                objWriter.Close()
+            End If
+            objWriter.Close()
+        Catch ex As Exception
+        End Try
+    End Sub
 End Class

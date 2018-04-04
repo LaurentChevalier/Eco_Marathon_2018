@@ -127,6 +127,8 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Resources\Shell.ico" />
+    <Content Include="Resources\Shell.png" />
     <Content Include="Resources\Test_bench.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
