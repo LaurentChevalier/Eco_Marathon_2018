@@ -112,13 +112,13 @@ void Adc1s(void)
 		strcat(Buffer,String_Tension);
 		strcpy(String_Tension,Buffer);
 	}
-	else if(Tension>10 && Tension<100)
+	else if(Tension>=10 && Tension<100)
 	{
 		strcpy(Buffer,"00");
 		strcat(Buffer,String_Tension);
 		strcpy(String_Tension,Buffer);
 	}
-	else if(Tension>100 && Tension<1000)
+	else if(Tension>=100 && Tension<1000)
 	{
 		strcpy(Buffer,"0");
 		strcat(Buffer,String_Tension);
@@ -145,13 +145,13 @@ void Adc2s(void)
 		strcat(Buffer,String_Courant_Moteur);
 		strcpy(String_Courant_Moteur,Buffer);
 	}
-	else if(Courant_Moteur>10 && Courant_Moteur<100)
+	else if(Courant_Moteur>=10 && Courant_Moteur<100)
 	{
 		strcpy(Buffer,"00");
 		strcat(Buffer,String_Courant_Moteur);
 		strcpy(String_Courant_Moteur,Buffer);
 	}
-	else if(Courant_Moteur>100 && Courant_Moteur<1000)
+	else if(Courant_Moteur>=100 && Courant_Moteur<1000)
 	{
 		strcpy(Buffer,"0");
 		strcat(Buffer,String_Courant_Moteur);
@@ -178,13 +178,13 @@ void Adc3s(void)
 		strcat(Buffer,String_Couple_Moteur);
 		strcpy(String_Couple_Moteur,Buffer);
 	}
-	else if(Couple_Moteur>10 && Couple_Moteur<100)
+	else if(Couple_Moteur>=10 && Couple_Moteur<100)
 	{
 		strcpy(Buffer,"00");
 		strcat(Buffer,String_Couple_Moteur);
 		strcpy(String_Couple_Moteur,Buffer);
 	}
-	else if(Couple_Moteur>100 && Couple_Moteur<1000)
+	else if(Couple_Moteur>=100 && Couple_Moteur<1000)
 	{
 		strcpy(Buffer,"0");
 		strcat(Buffer,String_Couple_Moteur);
@@ -200,7 +200,7 @@ void Interrupt_Speed(void)
 {
 	//Desable interrupt int0
 	EIMSK = (0<<INT0); //set bit in port EIMSK // désactivation de l'interruption sur INT0
-	rpm = rpmcount * 60;
+	rpm = rpmcount * 15; /* Convert frecuency to RPM, note: this works for one interruption per full rotation. For two interrups per full rotation use rpmcount * 30.*/
 	for(int i=0;i<5;i++){
 		String_RPM[i]=0;
 	}
@@ -211,13 +211,13 @@ void Interrupt_Speed(void)
 		strcat(Buffer,String_RPM);
 		strcpy(String_RPM,Buffer);
 	}
-	else if(rpm>10 && rpm<100)
+	else if(rpm>=10 && rpm<100)
 	{
 		strcpy(Buffer,"00");
 		strcat(Buffer,String_RPM);
 		strcpy(String_RPM,Buffer);
 	}
-	else if(rpm>100 && rpm<1000)
+	else if(rpm>=100 && rpm<1000)
 	{
 		strcpy(Buffer,"0");
 		strcat(Buffer,String_RPM);

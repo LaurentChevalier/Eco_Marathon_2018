@@ -731,10 +731,10 @@ void Adc1s(void)
  442:	0f d2       	rcall	.+1054   	; 0x862 <strcpy>
  444:	08 95       	ret
 	}
-	else if(Tension>10 && Tension<100)
+	else if(Tension>=10 && Tension<100)
  446:	80 91 8e 01 	lds	r24, 0x018E	; 0x80018e <Tension>
  44a:	90 91 8f 01 	lds	r25, 0x018F	; 0x80018f <Tension+0x1>
- 44e:	0b 97       	sbiw	r24, 0x0b	; 11
+ 44e:	0a 97       	sbiw	r24, 0x0a	; 10
  450:	dc f0       	brlt	.+54     	; 0x488 <__FUSE_REGION_LENGTH__+0x88>
  452:	80 91 8e 01 	lds	r24, 0x018E	; 0x80018e <Tension>
  456:	90 91 8f 01 	lds	r25, 0x018F	; 0x80018f <Tension+0x1>
@@ -763,10 +763,10 @@ void Adc1s(void)
  484:	ee d1       	rcall	.+988    	; 0x862 <strcpy>
  486:	08 95       	ret
 	}
-	else if(Tension>100 && Tension<1000)
+	else if(Tension>=100 && Tension<1000)
  488:	80 91 8e 01 	lds	r24, 0x018E	; 0x80018e <Tension>
  48c:	90 91 8f 01 	lds	r25, 0x018F	; 0x80018f <Tension+0x1>
- 490:	85 36       	cpi	r24, 0x65	; 101
+ 490:	84 36       	cpi	r24, 0x64	; 100
  492:	91 05       	cpc	r25, r1
  494:	bc f0       	brlt	.+46     	; 0x4c4 <__FUSE_REGION_LENGTH__+0xc4>
  496:	80 91 8e 01 	lds	r24, 0x018E	; 0x80018e <Tension>
@@ -859,10 +859,10 @@ void Adc2s(void)
  538:	94 d1       	rcall	.+808    	; 0x862 <strcpy>
  53a:	08 95       	ret
 	}
-	else if(Courant_Moteur>10 && Courant_Moteur<100)
+	else if(Courant_Moteur>=10 && Courant_Moteur<100)
  53c:	80 91 71 01 	lds	r24, 0x0171	; 0x800171 <Courant_Moteur>
  540:	90 91 72 01 	lds	r25, 0x0172	; 0x800172 <Courant_Moteur+0x1>
- 544:	0b 97       	sbiw	r24, 0x0b	; 11
+ 544:	0a 97       	sbiw	r24, 0x0a	; 10
  546:	dc f0       	brlt	.+54     	; 0x57e <__stack+0x7f>
  548:	80 91 71 01 	lds	r24, 0x0171	; 0x800171 <Courant_Moteur>
  54c:	90 91 72 01 	lds	r25, 0x0172	; 0x800172 <Courant_Moteur+0x1>
@@ -891,10 +891,10 @@ void Adc2s(void)
  57a:	73 d1       	rcall	.+742    	; 0x862 <strcpy>
  57c:	08 95       	ret
 	}
-	else if(Courant_Moteur>100 && Courant_Moteur<1000)
+	else if(Courant_Moteur>=100 && Courant_Moteur<1000)
  57e:	80 91 71 01 	lds	r24, 0x0171	; 0x800171 <Courant_Moteur>
  582:	90 91 72 01 	lds	r25, 0x0172	; 0x800172 <Courant_Moteur+0x1>
- 586:	85 36       	cpi	r24, 0x65	; 101
+ 586:	84 36       	cpi	r24, 0x64	; 100
  588:	91 05       	cpc	r25, r1
  58a:	bc f0       	brlt	.+46     	; 0x5ba <__stack+0xbb>
  58c:	80 91 71 01 	lds	r24, 0x0171	; 0x800171 <Courant_Moteur>
@@ -987,10 +987,10 @@ void Adc3s(void)
  62e:	19 d1       	rcall	.+562    	; 0x862 <strcpy>
  630:	08 95       	ret
 	}
-	else if(Couple_Moteur>10 && Couple_Moteur<100)
+	else if(Couple_Moteur>=10 && Couple_Moteur<100)
  632:	80 91 8c 01 	lds	r24, 0x018C	; 0x80018c <Couple_Moteur>
  636:	90 91 8d 01 	lds	r25, 0x018D	; 0x80018d <Couple_Moteur+0x1>
- 63a:	0b 97       	sbiw	r24, 0x0b	; 11
+ 63a:	0a 97       	sbiw	r24, 0x0a	; 10
  63c:	dc f0       	brlt	.+54     	; 0x674 <Adc3s+0xb8>
  63e:	80 91 8c 01 	lds	r24, 0x018C	; 0x80018c <Couple_Moteur>
  642:	90 91 8d 01 	lds	r25, 0x018D	; 0x80018d <Couple_Moteur+0x1>
@@ -1019,10 +1019,10 @@ void Adc3s(void)
  670:	f8 d0       	rcall	.+496    	; 0x862 <strcpy>
  672:	08 95       	ret
 	}
-	else if(Couple_Moteur>100 && Couple_Moteur<1000)
+	else if(Couple_Moteur>=100 && Couple_Moteur<1000)
  674:	80 91 8c 01 	lds	r24, 0x018C	; 0x80018c <Couple_Moteur>
  678:	90 91 8d 01 	lds	r25, 0x018D	; 0x80018d <Couple_Moteur+0x1>
- 67c:	85 36       	cpi	r24, 0x65	; 101
+ 67c:	84 36       	cpi	r24, 0x64	; 100
  67e:	91 05       	cpc	r25, r1
  680:	bc f0       	brlt	.+46     	; 0x6b0 <Adc3s+0xf4>
  682:	80 91 8c 01 	lds	r24, 0x018C	; 0x80018c <Couple_Moteur>
@@ -1058,10 +1058,10 @@ void Interrupt_Speed(void)
 	//Desable interrupt int0
 	EIMSK = (0<<INT0); //set bit in port EIMSK // désactivation de l'interruption sur INT0
  6b2:	1d ba       	out	0x1d, r1	; 29
-	rpm = rpmcount * 60;
+	rpm = rpmcount * 15; /* Convert frecuency to RPM, note: this works for one interruption per full rotation. For two interrups per full rotation use rpmcount * 30.*/
  6b4:	20 91 06 01 	lds	r18, 0x0106	; 0x800106 <__data_end>
  6b8:	30 91 07 01 	lds	r19, 0x0107	; 0x800107 <__data_end+0x1>
- 6bc:	4c e3       	ldi	r20, 0x3C	; 60
+ 6bc:	4f e0       	ldi	r20, 0x0F	; 15
  6be:	42 9f       	mul	r20, r18
  6c0:	c0 01       	movw	r24, r0
  6c2:	43 9f       	mul	r20, r19
@@ -1113,11 +1113,11 @@ void Interrupt_Speed(void)
  71c:	a2 d0       	rcall	.+324    	; 0x862 <strcpy>
  71e:	2f c0       	rjmp	.+94     	; 0x77e <Interrupt_Speed+0xcc>
 	}
-	else if(rpm>10 && rpm<100)
+	else if(rpm>=10 && rpm<100)
  720:	9c 01       	movw	r18, r24
- 722:	2b 50       	subi	r18, 0x0B	; 11
+ 722:	2a 50       	subi	r18, 0x0A	; 10
  724:	31 09       	sbc	r19, r1
- 726:	29 35       	cpi	r18, 0x59	; 89
+ 726:	2a 35       	cpi	r18, 0x5A	; 90
  728:	31 05       	cpc	r19, r1
  72a:	a0 f4       	brcc	.+40     	; 0x754 <Interrupt_Speed+0xa2>
 	{
@@ -1142,10 +1142,10 @@ void Interrupt_Speed(void)
  750:	88 d0       	rcall	.+272    	; 0x862 <strcpy>
  752:	15 c0       	rjmp	.+42     	; 0x77e <Interrupt_Speed+0xcc>
 	}
-	else if(rpm>100 && rpm<1000)
- 754:	85 56       	subi	r24, 0x65	; 101
+	else if(rpm>=100 && rpm<1000)
+ 754:	84 56       	subi	r24, 0x64	; 100
  756:	91 09       	sbc	r25, r1
- 758:	83 38       	cpi	r24, 0x83	; 131
+ 758:	84 38       	cpi	r24, 0x84	; 132
  75a:	93 40       	sbci	r25, 0x03	; 3
  75c:	80 f4       	brcc	.+32     	; 0x77e <Interrupt_Speed+0xcc>
 	{
