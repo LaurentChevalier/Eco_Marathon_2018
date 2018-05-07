@@ -8,3 +8,13 @@ C:\Users\laure\documents\visual studio 2010\Projects\Motor_Test_Bench\Motor_Test
 C:\Users\laure\documents\visual studio 2010\Projects\Motor_Test_Bench\Motor_Test_Bench\obj\x86\Release\Motor_Test_Bench.exe
 C:\Users\laure\documents\visual studio 2010\Projects\Motor_Test_Bench\Motor_Test_Bench\obj\x86\Release\Motor_Test_Bench.xml
 C:\Users\laure\documents\visual studio 2010\Projects\Motor_Test_Bench\Motor_Test_Bench\obj\x86\Release\Motor_Test_Bench.pdb
+D:\Mes documents\DOCUMENTS ECOLE\2_Master_Electronique\Eco-Marathon\Motor_Test_Bench_VB\Motor_Test_Bench\obj\x86\Release\Motor_Test_Bench.exe
+D:\Mes documents\DOCUMENTS ECOLE\2_Master_Electronique\Eco-Marathon\Motor_Test_Bench_VB\Motor_Test_Bench\obj\x86\Release\Motor_Test_Bench.xml
+D:\Mes documents\DOCUMENTS ECOLE\2_Master_Electronique\Eco-Marathon\Motor_Test_Bench_VB\Motor_Test_Bench\obj\x86\Release\Motor_Test_Bench.pdb
+D:\Mes documents\DOCUMENTS ECOLE\2_Master_Electronique\Eco-Marathon\Motor_Test_Bench_VB\Motor_Test_Bench\bin\Release\Motor_Test_Bench.exe
+D:\Mes documents\DOCUMENTS ECOLE\2_Master_Electronique\Eco-Marathon\Motor_Test_Bench_VB\Motor_Test_Bench\bin\Release\Motor_Test_Bench.pdb
+D:\Mes documents\DOCUMENTS ECOLE\2_Master_Electronique\Eco-Marathon\Motor_Test_Bench_VB\Motor_Test_Bench\bin\Release\Motor_Test_Bench.xml
+D:\Mes documents\DOCUMENTS ECOLE\2_Master_Electronique\Eco-Marathon\Motor_Test_Bench_VB\Motor_Test_Bench\obj\x86\Release\Motor_Test_Bench.Main.resources
+D:\Mes documents\DOCUMENTS ECOLE\2_Master_Electronique\Eco-Marathon\Motor_Test_Bench_VB\Motor_Test_Bench\obj\x86\Release\Motor_Test_Bench.Settings.resources
+D:\Mes documents\DOCUMENTS ECOLE\2_Master_Electronique\Eco-Marathon\Motor_Test_Bench_VB\Motor_Test_Bench\obj\x86\Release\Motor_Test_Bench.Resources.resources
+D:\Mes documents\DOCUMENTS ECOLE\2_Master_Electronique\Eco-Marathon\Motor_Test_Bench_VB\Motor_Test_Bench\obj\x86\Release\Motor_Test_Bench.vbproj.GenerateResource.Cache

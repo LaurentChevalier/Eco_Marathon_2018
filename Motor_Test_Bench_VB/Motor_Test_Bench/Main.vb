@@ -83,12 +83,16 @@ Public Class Main
         Tension = Decimal.Round(Tension, 3)
         Courant = ((((5000 * (Courant)) / 1023) - 2500) * (1000 / 66)) / 1000
         Courant = Decimal.Round(Courant, 3)
+        Vitesse = Vitesse * (0.001885 * 5.3) ' 5.3 = diamètre rouleau en cm
+        Vitesse = Decimal.Round(Vitesse, 3)
+        Couple = (Couple * 0.4351825)
+        Couple = Decimal.Round(Couple, 3)
         Puissance = Tension * Courant
-        TextBox1.Text = Tension
-        TextBox2.Text = Courant
-        TextBox3.Text = VitesseVal
-        TextBox4.Text = CoupleVal
-        TextBox5.Text = Puissance
+        TextBox1.Text = Tension & "V"
+        TextBox2.Text = Courant & "A"
+        TextBox3.Text = Vitesse & "km/h"
+        TextBox4.Text = Couple & "Nm"
+        TextBox5.Text = Puissance & "W"
 
         SerialPort1.Close()
 
